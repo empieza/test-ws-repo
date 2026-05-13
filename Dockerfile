@@ -3,7 +3,9 @@ FROM node:18-alpine
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --only=production
+
+# Используем npm install вместо npm ci (не требует lock-файла)
+RUN npm install --omit=dev
 
 COPY server.js .
 
