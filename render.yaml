@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cloud-configs-ws
+    runtime: node
+    repo: https://github.com/empieza/test-ws-repo
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: CLOUD_API_SECRET
+        generateValue: true
+      - key: ADMIN_SECRET
+        generateValue: true
+    buildCommand: npm install
+    startCommand: node server.js
